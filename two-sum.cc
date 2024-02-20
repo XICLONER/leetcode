@@ -1,44 +1,26 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 int main()
 {
-    int input;
-    int target;
-
-    cout << "how many numbers do you want to enter?\n";
-    cin >> input;
-
-    int numbers[input];
-
-    cout << "what is your target?\n";
-    cin >> target;
-
-    cout << "enter your numbers\n";
-
-    for (int i = 0; i < input; i++)
+    class Solution
     {
-        cin >> numbers[i];
-    }
-
-    cout << "\n";
-
-    int solution[2];
-
-    for (int i = 0; i < input; i++)
-    {
-        for (int j = i + 1; j < input; j++)
+    public:
+        vector<int> twoSum(vector<int> &nums, int target)
         {
-            if (numbers[i] + numbers[j] == target)
+            for (int i = 0; i < nums.size() - 1; i++)
             {
-                solution[0] = i;
-                solution[1] = j;
-
-                cout << solution[0] << " - " << solution[1] << "\n";
-
-                return 0;
+                for (int j = i + 1; j < nums.size(); j++)
+                {
+                    if (nums[i] + nums[j] == target)
+                    {
+                        return {i, j};
+                    }
+                }
             }
+            return {0, 0};
         }
-    }
+    };
 }
